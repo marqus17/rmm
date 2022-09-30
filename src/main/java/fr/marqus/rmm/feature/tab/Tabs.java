@@ -4,6 +4,7 @@ package fr.marqus.rmm.feature.tab;
  * Tabs.
  */
 public enum Tabs {
+    COPY_MOVE_MESSAGE("/layout/CopyMoveMessagePane.fxml", "Copy or move message"),
     SAVE_MESSAGE("/layout/SaveMessagePane.fxml", "Save message"),
     SEND_MESSAGE("/layout/SendMessagePane.fxml", "Send message"),
     QUEUE_MANAGER("/layout/QueueManagerPane.fxml", "Queue manager");
