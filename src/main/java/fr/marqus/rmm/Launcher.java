@@ -1,8 +1,13 @@
 package fr.marqus.rmm;
 
-public class Launcher {
+import fr.marqus.rmm.feature.RmmFx;
+
+/**
+ * RabbitMQ Message Manager.
+ */
+public final class Launcher {
 
     public static void main(String[] args) {
-
+        RmmFx.main(args);
     }
 }
