@@ -12,17 +12,17 @@
         <TableView layoutX="14.0" layoutY="14.0" prefHeight="326.0" prefWidth="572.0" AnchorPane.bottomAnchor="60.0"
                    AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="Name"/>
-                <TableColumn prefWidth="75.0" text="Host"/>
-                <TableColumn prefWidth="75.0" text="Port"/>
+                <TableColumn fx:id="labelTableColumn" prefWidth="75.0" text="Label"/>
+                <TableColumn fx:id="hostTableColumn" prefWidth="75.0" text="Host"/>
+                <TableColumn fx:id="portTableColumn" prefWidth="75.0" text="Port"/>
                 <TableColumn prefWidth="75.0" text="Queue">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="Name"/>
-                        <TableColumn prefWidth="75.0" text="Type"/>
+                        <TableColumn fx:id="queueNameTableColumn" prefWidth="75.0" text="Name"/>
+                        <TableColumn fx:id="queueTypeTableColumn" prefWidth="75.0" text="Type"/>
                     </columns>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="Login"/>
-                <TableColumn prefWidth="75.0" text="Password"/>
+                <TableColumn fx:id="loginTableColumn" prefWidth="75.0" text="Login"/>
+                <TableColumn fx:id="passwordTableColumn" prefWidth="75.0" text="Password"/>
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
