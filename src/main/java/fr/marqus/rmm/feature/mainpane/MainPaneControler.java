@@ -32,12 +32,12 @@ public final class MainPaneControler implements Initializable {
     private TextArea logTextArea;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(final URL location, final ResourceBundle resources) {
         Arrays.stream(Tabs.values())
                 .forEach(this::loadTabs);
     }
 
-    private void loadTabs(Tabs tab) {
+    private void loadTabs(final Tabs tab) {
         FXMLLoader loader = new FXMLLoader();
         try {
             AnchorPane pane = loader.load(getClass().getResourceAsStream(tab.path));

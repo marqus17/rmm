@@ -19,8 +19,16 @@ public final class RmmFx extends Application {
 
     private static final String TITLE = "RabbitMQ Message Manager";
 
+    /**
+     * JavaFx start method.
+     *
+     * @param primaryStage the primary stage for this application, onto which
+     *                     the application scene can be set.
+     *                     Applications may create other stages, if needed, but they will not be
+     *                     primary stages.
+     */
     @Override
-    public void start(Stage primaryStage) {
+    public void start(final Stage primaryStage) {
         primaryStage.setTitle(TITLE);
         try {
             Pane pane = loadMainPane();
@@ -37,7 +45,12 @@ public final class RmmFx extends Application {
         return loader.load(getClass().getResourceAsStream("/layout/MainPane.fxml"));
     }
 
-    public static void main(String[] args) {
+    /**
+     * FX app launch func.
+     *
+     * @param args app args.
+     */
+    public static void main(final String[] args) {
         launch(args);
     }
 }

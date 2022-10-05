@@ -37,11 +37,11 @@ public final class SendMessagePaneControler implements Initializable {
     private Button sendButton;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(final URL location, final ResourceBundle resources) {
         selectFileButton.setOnAction(this::openFile);
     }
 
-    private void openFile(ActionEvent evt) {
+    private void openFile(final ActionEvent evt) {
         FileChooser chooser = new FileChooser();
         File file = chooser.showOpenDialog(null);
         if (file != null) {

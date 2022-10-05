@@ -39,17 +39,17 @@ public final class QueueManagerPaneControler implements Initializable {
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(final URL location, final ResourceBundle resources) {
         initTableColumns();
     }
 
     private void initTableColumns() {
-        labelTableColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getQueueLabel()));
-        hostTableColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getRabbitServerPath()));
-        portTableColumn.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getRabbitServerPort()));
-        loginTableColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getRabbitLogin()));
-        passwordTableColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getRabbitPassword()));
-        queueNameTableColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getQueueName()));
-        queueTypeTableColumn.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getQueueType()));
+        labelTableColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().queueLabel()));
+        hostTableColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().rabbitServerPath()));
+        portTableColumn.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().rabbitServerPort()));
+        loginTableColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().rabbitLogin()));
+        passwordTableColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().rabbitPassword()));
+        queueNameTableColumn.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().queueName()));
+        queueTypeTableColumn.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().queueType()));
     }
 }

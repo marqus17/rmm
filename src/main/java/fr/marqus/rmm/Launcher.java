@@ -7,7 +7,15 @@ import fr.marqus.rmm.feature.RmmFx;
  */
 public final class Launcher {
 
-    public static void main(String[] args) {
+    private Launcher() {
+        // Nothing to do
+    }
+
+    /**
+     * Methode de lancement de l'application.
+     * @param args params de lancement
+     */
+    public static void main(final String[] args) {
         RmmFx.main(args);
     }
 }

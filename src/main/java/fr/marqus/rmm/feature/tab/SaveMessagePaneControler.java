@@ -31,11 +31,11 @@ public final class SaveMessagePaneControler implements Initializable {
     private Button saveMessagesButton;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(final URL location, final ResourceBundle resources) {
         selectFileButton.setOnAction(this::saveFile);
     }
 
-    private void saveFile(ActionEvent evt) {
+    private void saveFile(final ActionEvent evt) {
         FileChooser chooser = new FileChooser();
         File file = chooser.showSaveDialog(null);
         if (file != null) {
