@@ -1,5 +1,8 @@
 package fr.marqus.rmm.domain.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * RabbitMQ config.
  *
@@ -18,6 +21,18 @@ public record QueueConfig(String queueLabel,
                           String rabbitPassword,
                           String queueName,
                           QueueType queueType) {
+
+    /**
+     * Get arguments map.
+     *
+     * @return the arguments map
+     */
+    public Map<String, Object> getArguments() {
+        Map<String, Object> map = new HashMap<>();
+        map.put(QueueType.QUEUE_TYPE_KEY, queueType.label);
+        return map;
+    }
+
     @Override
     public String toString() {
         return queueLabel;

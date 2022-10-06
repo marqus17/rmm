@@ -15,6 +15,11 @@ public enum QueueType {
     QUORUM("quorum");
 
     /**
+     * RabbitMQ queue type key.
+     */
+    public static final String QUEUE_TYPE_KEY = "s-queue-type";
+
+    /**
      * Queue type label.
      */
     public final String label;

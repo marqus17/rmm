@@ -1,5 +1,7 @@
 package fr.marqus.rmm.feature;
 
+import com.gluonhq.ignite.guice.GuiceContext;
+import fr.marqus.rmm.domain.repository.RepositoryModule;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,6 +22,12 @@ public final class RmmFx extends Application {
 
     private static final String TITLE = "RabbitMQ Message Manager";
 
+    private static GuiceContext context = null;
+
+    public static GuiceContext getContext() {
+        return context;
+    }
+
     /**
      * JavaFx start method.
      *
@@ -29,6 +38,7 @@ public final class RmmFx extends Application {
      */
     @Override
     public void start(final Stage primaryStage) {
+        context = new GuiceContext(this, () -> List.of(new RepositoryModule()));
         primaryStage.setTitle(TITLE);
         try {
             Pane pane = loadMainPane();
