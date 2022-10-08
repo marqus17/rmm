@@ -1,12 +1,15 @@
 package fr.marqus.rmm.feature.tab;
 
+import fr.marqus.rmm.domain.model.QueueConfig;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -34,10 +37,20 @@ public final class SendMessagePaneControler implements Initializable {
     private RadioButton messageRadioButton;
 
     @FXML
+    private ComboBox<QueueConfig> targetQueueComboBox;
+
+    @FXML
     private Button sendButton;
+
+    private final ToggleGroup messageTypeToggleGroup = new ToggleGroup();
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
+        messageRadioButton.setToggleGroup(messageTypeToggleGroup);
+        fileRadioButton.setToggleGroup(messageTypeToggleGroup);
+        fileTextField.disableProperty().bind(messageRadioButton.selectedProperty());
+        selectFileButton.disableProperty().bind(messageRadioButton.selectedProperty());
+        messageTextArea.disableProperty().bind(messageRadioButton.selectedProperty().map(value -> !value));
         selectFileButton.setOnAction(this::openFile);
     }
 
@@ -47,5 +60,15 @@ public final class SendMessagePaneControler implements Initializable {
         if (file != null) {
             fileTextField.setText(file.getAbsolutePath());
         }
+    }
+
+    private boolean isMessagesEmpty() {
+        boolean result;
+        if (messageRadioButton.isSelected()) {
+            result = messageTextArea.getText().isBlank();
+        } else {
+            result = fileTextField.getText().isBlank();
+        }
+        return result;
     }
 }

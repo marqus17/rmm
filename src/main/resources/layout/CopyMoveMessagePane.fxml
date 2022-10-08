@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -13,10 +14,14 @@
         <ComboBox fx:id="sourceQueueComboBox" layoutX="104.0" layoutY="10.0" prefHeight="24.0" prefWidth="475.0" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0" />
         <Label layoutX="14.0" layoutY="43.0" text="Target queue" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="44.0" />
         <ComboBox fx:id="targetQueueComboBox" layoutX="111.0" layoutY="40.0" prefWidth="150.0" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="40.0" />
-        <Button fx:id="copyMoveButton" layoutX="524.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" text="Copy" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+        <ToggleButton fx:id="copyMoveButton" disable="true" layoutX="524.0" layoutY="362.0" mnemonicParsing="false" prefHeight="40.0" text="Start" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+            <graphic>
+                <ImageView fx:id="copyMoveImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+            </graphic>
+        </ToggleButton>
         <VBox layoutX="14.0" layoutY="77.0" spacing="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="74.0">
             <children>
-                <RadioButton fx:id="copyRadioButton" mnemonicParsing="false" text="Copy" />
+                <RadioButton fx:id="copyRadioButton" mnemonicParsing="false" selected="true" text="Copy" />
                 <RadioButton fx:id="moveRadioButton" mnemonicParsing="false" text="Move" />
             </children>
         </VBox>
