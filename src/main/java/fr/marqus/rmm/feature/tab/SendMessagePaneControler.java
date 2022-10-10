@@ -52,6 +52,12 @@ public final class SendMessagePaneControler implements Initializable {
         selectFileButton.disableProperty().bind(messageRadioButton.selectedProperty());
         messageTextArea.disableProperty().bind(messageRadioButton.selectedProperty().map(value -> !value));
         selectFileButton.setOnAction(this::openFile);
+        targetQueueComboBox.getSelectionModel()
+                .selectedIndexProperty()
+                .addListener((obs, oldVal, newVal) -> {
+                    boolean result = (newVal.intValue() == -1) || isMessagesEmpty();
+                    sendButton.setDisable(result);
+                });
     }
 
     private void openFile(final ActionEvent evt) {
@@ -63,12 +69,10 @@ public final class SendMessagePaneControler implements Initializable {
     }
 
     private boolean isMessagesEmpty() {
-        boolean result;
         if (messageRadioButton.isSelected()) {
-            result = messageTextArea.getText().isBlank();
+            return messageTextArea.getText().isBlank();
         } else {
-            result = fileTextField.getText().isBlank();
+            return fileTextField.getText().isBlank();
         }
-        return result;
     }
 }
