@@ -1,6 +1,9 @@
 package fr.marqus.rmm.feature.tab;
 
 import fr.marqus.rmm.domain.model.QueueConfig;
+import fr.marqus.rmm.domain.repository.MessageRepository;
+import fr.marqus.rmm.domain.repository.QueueConfigRepository;
+import fr.marqus.rmm.feature.RmmFx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,6 +33,10 @@ public final class SaveMessagePaneControler implements Initializable {
 
     private static final Image STOP_PICTURE = new Image(Objects.requireNonNull(CopyMoveMessagePaneControler.class.getResourceAsStream("/picture/stop.png")));
 
+    private final QueueConfigRepository queueConfigRepository = RmmFx.getDIInstance(QueueConfigRepository.class);
+
+    private final MessageRepository messageRepository = RmmFx.getDIInstance(MessageRepository.class);
+
     @FXML
     private ComboBox<QueueConfig> sourceQueueComboBox;
 
@@ -47,6 +54,7 @@ public final class SaveMessagePaneControler implements Initializable {
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
+        sourceQueueComboBox.setItems(queueConfigRepository.getQueueConfigs());
         sourceQueueComboBox.getSelectionModel()
                 .selectedIndexProperty()
                 .addListener((obs, oldVal, newVal) -> {
@@ -64,6 +72,7 @@ public final class SaveMessagePaneControler implements Initializable {
             if (Boolean.TRUE.equals(newVal)) {
                 saveMessagesButton.setText(STOP);
                 saveMessagesImageView.setImage(STOP_PICTURE);
+                messageRepository.saveMessages(sourceQueueComboBox.getValue(), new File(fileTextField.getText()));
             } else {
                 saveMessagesButton.setText(START);
                 saveMessagesImageView.setImage(START_PICTURE);

@@ -13,6 +13,7 @@ public final class Launcher {
 
     /**
      * Methode de lancement de l'application.
+     *
      * @param args params de lancement
      */
     public static void main(final String[] args) {

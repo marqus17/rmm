@@ -22,10 +22,16 @@ public final class RmmFx extends Application {
 
     private static final String TITLE = "RabbitMQ Message Manager";
 
-    private static GuiceContext context = null;
 
-    public static GuiceContext getContext() {
-        return context;
+    private static GuiceContext context;
+
+    private static void initContext(final Object contextRoot) {
+        context = new GuiceContext(contextRoot, () -> List.of(new RepositoryModule()));
+        context.init();
+    }
+
+    public static <T> T getDIInstance(Class<T> cls) {
+        return context.getInstance(cls);
     }
 
     /**
@@ -38,7 +44,7 @@ public final class RmmFx extends Application {
      */
     @Override
     public void start(final Stage primaryStage) {
-        context = new GuiceContext(this, () -> List.of(new RepositoryModule()));
+        initContext(this);
         primaryStage.setTitle(TITLE);
         try {
             Pane pane = loadMainPane();
